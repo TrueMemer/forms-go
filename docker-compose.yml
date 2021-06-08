@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    restart: unless-stopped
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: forms
+      POSTGRES_DB: forms
+      POSTGRES_USER: forms
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - 8080:8080
